@@ -59,7 +59,7 @@ Help the hero escape by solving 23 levels of increasingly difficult pattern puzz
 3. Select your branch (usually `main`)
 4. Set the folder to `/ (root)` or `/HackDay Project` depending on your structure
 5. Save and wait for deployment
-6. Your site will be live at `https://yourusername.github.io/repository-name/`
+6. Your site will be live at `(https://mdreduanulhoque.github.io/HackDay_2026/)`
 
 ### Local Testing
 
