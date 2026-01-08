@@ -4,6 +4,13 @@
 
 **HackDay Theme:** "Communication is Not a Barrier"
 
+**Demo Live:** "[Communication is Not a Barrier](https://mdreduanulhoque.github.io/HackDay_2026/)"
+
+### Collaborator
+- MD Reduanul Hoque
+- Shaikh Jubair
+- Mahzabin Binte Mizan
+
 This project was developed for a HackDay with a focus on supporting children whose brain development differs from typical patterns, particularly those who face challenges with communication. Through engaging, story-based cognitive games, we aim to provide an accessible platform that helps these children develop essential cognitive skills in a fun, non-verbal way.
 
 ### Our Focus
