@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Story Games - Login to play cognitive story-based games">
+  <title>Story Games - Login</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/auth.css">
+</head>
+
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <!-- Logo -->
+      <div class="auth-logo">
+        <div class="auth-logo-icon">🎮</div>
+        <h1 class="auth-title">Story Games</h1>
+        <p class="auth-subtitle">Train your brain with intelligent stories</p>
+      </div>
+
+      <!-- Alert Messages -->
+      <div id="loginError" class="alert alert-error"></div>
+
+      <!-- Demo Credentials Info -->
+      <div class="alert alert-info"
+        style="background-color: #e3f2fd; color: #1976d2; border-left: 4px solid #2196f3; margin-bottom: 20px;">
+        <strong>🎯 Demo Account for Testing:</strong><br>
+        <strong>Email:</strong> demo@test.com<br>
+        <strong>Password:</strong> demo123
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required
+            autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+          Login
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="auth-divider">
+        <span>New to Story Games?</span>
+      </div>
+
+      <!-- Register Link -->
+      <div class="auth-link">
+        <a href="register.html">Create an Account</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="scripts/storage.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script>
+    // Check if already logged in
+    checkAuth(false);
+
+    // Handle login form submission
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formData = {
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value
+      };
+
+      const submitButton = e.target.querySelector('button[type="submit"]');
+      setButtonLoading(submitButton, true);
+      hideError('loginError');
+
+      // Simulate network delay for better UX
+      setTimeout(() => {
+        const result = loginUser(formData.email, formData.password);
+        setButtonLoading(submitButton, false);
+
+        if (result.success) {
+          // Redirect to dashboard
+          window.location.href = 'dashboard.html';
+        } else {
+          showError('loginError', result.message);
+        }
+      }, 500);
+    });
+  </script>
+</body>
+
+</html>

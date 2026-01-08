@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Story Games - Your gaming dashboard">
+    <title>Story Games - Dashboard</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="container dashboard-header-content">
+                <div class="dashboard-welcome">
+                    <h2>Welcome back, <span id="userName"></span>!</h2>
+                    <p>Ready to train your brain?</p>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn btn-secondary" onclick="logoutUser()">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Section -->
+        <section class="container">
+            <div class="stats-grid" id="statsGrid">
+                <!-- Stats will be inserted here -->
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section class="games-section container">
+            <h2 class="section-title">🎮 Choose Your Game</h2>
+            <div class="games-grid">
+                <!-- Game 1 Card -->
+                <div class="game-card game1">
+                    <div class="game-icon">🔍</div>
+                    <h3 class="game-title">Pattern Detective</h3>
+                    <p class="game-description">
+                        Read stories and identify whether they describe a <strong>Shape</strong>,
+                        <strong>Color</strong>, or <strong>Feeling</strong>.
+                        Sharpen your analytical skills with progressive difficulty!
+                    </p>
+                    <div class="game-stats">
+                        <div class="game-stat">
+                            <div class="game-stat-label">Your Score</div>
+                            <div class="game-stat-value" id="game1Score">0</div>
+                        </div>
+                        <div class="game-stat">
+                            <div class="game-stat-label">Level</div>
+                            <div class="game-stat-value" id="game1Level">1</div>
+                        </div>
+                        <div class="game-stat">
+                            <div class="game-stat-label">Rank</div>
+                            <div class="game-stat-value" id="game1Rank">#-</div>
+                        </div>
+                    </div>
+                    <a href="game1.html" class="btn btn-primary btn-lg" style="width: 100%;">
+                        Play Now
+                    </a>
+                </div>
+
+                <!-- Game 2 Card -->
+                <div class="game-card game2">
+                    <div class="game-icon">🔢</div>
+                    <h3 class="game-title">Number Hunter</h3>
+                    <p class="game-description">
+                        Discover the hidden number in each story. From simple numbers to complex calculations,
+                        test your comprehension and mathematical intuition!
+                    </p>
+                    <div class="game-stats">
+                        <div class="game-stat">
+                            <div class="game-stat-label">Your Score</div>
+                            <div class="game-stat-value" id="game2Score">0</div>
+                        </div>
+                        <div class="game-stat">
+                            <div class="game-stat-label">Level</div>
+                            <div class="game-stat-value" id="game2Level">1</div>
+                        </div>
+                        <div class="game-stat">
+                            <div class="game-stat-label">Rank</div>
+                            <div class="game-stat-value" id="game2Rank">#-</div>
+                        </div>
+                    </div>
+                    <a href="game2.html" class="btn btn-primary btn-lg" style="width: 100%;">
+                        Play Now
+                    </a>
+                </div>
+
+                <!-- Game 3 Card -->
+                <div class="game-card game3">
+                    <div class="game-icon">🧞‍♂️</div>
+                    <h3 class="game-title">Gene World Escape</h3>
+                    <p class="game-description">
+                        Help the hero escape by solving abstract puzzles!
+                        Match patterns and unlock the path to freedom.
+                    </p>
+                    <div class="game-stats">
+                        <div class="game-stat">
+                            <div class="game-stat-label">Your Score</div>
+                            <div class="game-stat-value" id="game3Score">0</div>
+                        </div>
+                        <div class="game-stat">
+                            <div class="game-stat-label">Level</div>
+                            <div class="game-stat-value" id="game3Level">1</div>
+                        </div>
+                        <div class="game-stat">
+                            <div class="game-stat-label">Rank</div>
+                            <div class="game-stat-value" id="game3Rank">#-</div>
+                        </div>
+                    </div>
+                    <a href="game3.html" class="btn btn-primary btn-lg" style="width: 100%;">
+                        Play Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <section class="leaderboard-section container">
+            <h2 class="section-title">🏆 Leaderboard</h2>
+
+            <!-- Tabs -->
+            <div class="leaderboard-tabs">
+                <button class="tab-button active" onclick="switchTab(1)">
+                    Pattern Detective
+                </button>
+                <button class="tab-button" onclick="switchTab(2)">
+                    Number Hunter
+                </button>
+                <button class="tab-button" onclick="switchTab(3)">
+                    Gene World Escape
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content active" id="leaderboard1">
+                <!-- Game 1 leaderboard will be inserted here -->
+            </div>
+
+    </div>
+
+    <div class="tab-content" id="leaderboard2">
+        <!-- Game 2 leaderboard will be inserted here -->
+    </div>
+
+    <div class="tab-content" id="leaderboard3">
+        <!-- Game 3 leaderboard will be inserted here -->
+    </div>
+    </section>
+    </div>
+
+    <!-- User Profile Modal -->
+    <div id="userProfileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-close" onclick="closeUserProfile()">&times;</span>
+                <h3 id="profileName">User Profile</h3>
+            </div>
+
+            <div class="profile-info">
+                <div class="profile-row">
+                    <span class="profile-label">Email</span>
+                    <span class="profile-value" id="profileEmail"></span>
+                </div>
+                <div class="profile-row">
+                    <span class="profile-label">Age</span>
+                    <span class="profile-value"><span id="profileAge"></span> years</span>
+                </div>
+                <div class="profile-row">
+                    <span class="profile-label">Member Since</span>
+                    <span class="profile-value" id="profileJoined"></span>
+                </div>
+            </div>
+
+            <div class="profile-games">
+                <div class="profile-game">
+                    <h4 class="profile-game-title">🔍 Pattern Detective</h4>
+                    <div class="profile-row">
+                        <span class="profile-label">Score</span>
+                        <span class="profile-value" id="profileGame1Score">0</span>
+                    </div>
+                    <div class="profile-row">
+                        <span class="profile-label">Rank</span>
+                        <span class="profile-value" id="profileGame1Rank">#-</span>
+                    </div>
+                    <div class="profile-row">
+                        <span class="profile-label">Level</span>
+                        <span class="profile-value" id="profileGame1Level">1</span>
+                    </div>
+                </div>
+
+                <div class="profile-game">
+                    <h4 class="profile-game-title">🔢 Number Hunter</h4>
+                    <div class="profile-row">
+                        <span class="profile-label">Score</span>
+                        <span class="profile-value" id="profileGame2Score">0</span>
+                    </div>
+                    <div class="profile-row">
+                        <span class="profile-label">Rank</span>
+                        <span class="profile-value" id="profileGame2Rank">#-</span>
+                    </div>
+                    <div class="profile-row">
+                        <span class="profile-label">Level</span>
+                        <span class="profile-value" id="profileGame2Level">1</span>
+                    </div>
+                </div>
+
+                <div class="profile-game">
+                    <h4 class="profile-game-title">🧞‍♂️ Gene World Escape</h4>
+                    <div class="profile-row">
+                        <span class="profile-label">Score</span>
+                        <span class="profile-value" id="profileGame3Score">0</span>
+                    </div>
+                    <div class="profile-row">
+                        <span class="profile-label">Rank</span>
+                        <span class="profile-value" id="profileGame3Rank">#-</span>
+                    </div>
+                    <div class="profile-row">
+                        <span class="profile-label">Level</span>
+                        <span class="profile-value" id="profileGame3Level">1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/leaderboard.js"></script>
+    <script>
+        // Check authentication
+        checkAuth(true);
+
+        // Get current user
+        const currentUser = getCurrentUser();
+
+        if (currentUser) {
+            // Display user info
+            document.getElementById('userName').textContent = currentUser.name;
+
+            // Get user stats
+            const stats = getUserStats(currentUser.id);
+
+            // Display stats cards
+            const statsGrid = document.getElementById('statsGrid');
+            statsGrid.innerHTML = `
+        <div class="stat-card total">
+          <div class="stat-label">
+            <span class="stat-label-icon">💯</span>
+            Total Score
+          </div>
+          <div class="stat-value">${stats.totalScore}</div>
+          <div class="stat-details">
+            <div class="stat-detail">
+              <span>📊</span>
+              ${stats.totalCompleted} completed
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card game1">
+          <div class="stat-label">
+            <span class="stat-label-icon">🔍</span>
+            Pattern Detective
+          </div>
+          <div class="stat-value">${stats.game1.score}</div>
+          <div class="stat-details">
+            <div class="stat-detail">
+              <span>🏅</span>
+              Rank #${stats.game1.rank}
+            </div>
+            <div class="stat-detail">
+              <span>⬆️</span>
+              Level ${stats.game1.level}
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card game2">
+          <div class="stat-label">
+            <span class="stat-label-icon">🔢</span>
+            Number Hunter
+          </div>
+          <div class="stat-value">${stats.game2.score}</div>
+          <div class="stat-details">
+            <div class="stat-detail">
+              <span>🏅</span>
+              Rank #${stats.game2.rank}
+            </div>
+            <div class="stat-detail">
+              <span>⬆️</span>
+              Level ${stats.game2.level}
+            </div>
+          </div>
+        </div>
+        </div>
+        
+        <div class="stat-card game3">
+          <div class="stat-label">
+            <span class="stat-label-icon">🧞‍♂️</span>
+            Gene World Escape
+          </div>
+          <div class="stat-value">${stats.game3.score}</div>
+          <div class="stat-details">
+            <div class="stat-detail">
+              <span>🏅</span>
+              Rank #${stats.game3.rank}
+            </div>
+            <div class="stat-detail">
+              <span>⬆️</span>
+              Level ${stats.game3.level}
+            </div>
+          </div>
+        </div>
+      `;
+
+            // Update game cards
+            document.getElementById('game1Score').textContent = stats.game1.score;
+            document.getElementById('game1Level').textContent = stats.game1.level;
+            document.getElementById('game1Rank').textContent = '#' + stats.game1.rank;
+
+            document.getElementById('game2Level').textContent = stats.game2.level;
+            document.getElementById('game2Rank').textContent = '#' + stats.game2.rank;
+
+            document.getElementById('game3Score').textContent = stats.game3.score;
+            document.getElementById('game3Level').textContent = stats.game3.level;
+            document.getElementById('game3Rank').textContent = '#' + stats.game3.rank;
+
+            // Display leaderboards
+            document.getElementById('leaderboard1').innerHTML = renderLeaderboard(1, currentUser.id);
+            document.getElementById('leaderboard2').innerHTML = renderLeaderboard(2, currentUser.id);
+            document.getElementById('leaderboard3').innerHTML = renderLeaderboard(3, currentUser.id);
+
+            // Add click handlers to leaderboard items
+            document.querySelectorAll('.leaderboard-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    const userId = this.dataset.userId;
+                    showUserProfile(userId);
+                });
+            });
+        }
+
+        // Tab switching function
+        function switchTab(gameType) {
+            // Update tab buttons
+            const tabs = document.querySelectorAll('.tab-button');
+            tabs.forEach((tab, index) => {
+                if (index === gameType - 1) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            // Update tab content
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach((content, index) => {
+                if (index === gameType - 1) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+        }
+
+        // Close modal on outside click
+        document.getElementById('userProfileModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeUserProfile();
+            }
+        });
+    </script>
+</body>
+
+</html>

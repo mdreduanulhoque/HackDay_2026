@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gene World Escape - Solve puzzles to help the gene escape">
+    <title>Gene World Escape - Story Games</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/game.css">
+    <link rel="stylesheet" href="styles/game3.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <!-- Game Header -->
+        <header class="game-header">
+            <div class="container game-header-content">
+                <div class="game-title-section">
+                    <div class="game-title-icon">🧞‍♂️</div>
+                    <div class="game-title-text">
+                        <h1>Gene World Escape</h1>
+                        <p class="game-subtitle">Solve the patterns to help the hero escape!</p>
+                    </div>
+                </div>
+
+                <div class="game-stats-bar">
+                    <div class="game-stat-item">
+                        <div class="game-stat-label">Score</div>
+                        <div class="game-stat-value score" id="currentScore">0</div>
+                    </div>
+                    <div class="game-stat-item">
+                        <div class="game-stat-label">Level</div>
+                        <div class="game-stat-value level" id="currentLevel">1</div>
+                    </div>
+                    <div class="game-stat-item">
+                        <div class="game-stat-label">Progress</div>
+                        <div class="game-stat-value" id="levelsCompleted">0</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Game Area -->
+        <main class="game-area">
+            <div class="game3-container" id="app-container">
+
+                <div id="intro-screen" class="screen active">
+                    <div class="road"></div>
+                    <div id="hero" class="character running">🏃</div>
+                    <div id="level-marker">Lv. <span id="introLevel">1</span></div>
+                    <div id="gene-intro" class="character hidden">🧞‍♂️</div>
+                </div>
+
+                <!-- Auth Screen removed, replaced with direct game entry logic -->
+
+                <div id="game-screen" class="screen hidden">
+                    <div class="game3-header">
+                        <div id="user-display">👤 <span id="username-display"></span></div>
+                        <div id="level-display">Lv. 1</div>
+                    </div>
+
+                    <div class="gene-helper">
+                        <div class="gene-avatar">🧞‍♂️</div>
+                        <div class="message-bubble">
+                            <span id="gene-hint">Observation is key...</span>
+                        </div>
+                    </div>
+
+                    <div class="puzzle-container">
+                        <div id="puzzle-grid" class="grid-3x3"></div>
+                    </div>
+
+                    <div class="options-container" id="options-container">
+                    </div>
+
+                    <div id="feedback-overlay" class="hidden"></div>
+                </div>
+
+                <div id="victory-screen" class="screen hidden">
+                    <div class="fireworks">🎆 🎇 ✨</div>
+                    <div class="hero-free">🏃💨 🚪</div>
+                    <div class="message">You Escaped! 🔓 🌍</div>
+                    <p>Final Score: <span id="final-score">0</span></p>
+                    <div class="rank" id="final-rank">Mastermind</div>
+                    <button id="btn-restart">Play Again</button>
+                    <br>
+                    <a href="dashboard.html" class="btn btn-secondary"
+                        style="margin-top: 10px; display: inline-block;">Back to Dashboard</a>
+                </div>
+
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="dashboard.html" class="btn btn-secondary">
+                    Back to Dashboard
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/game3.js"></script>
+</body>
+
+</html>

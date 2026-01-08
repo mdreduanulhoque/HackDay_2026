@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pattern Detective - Identify shapes, colors, or feelings in stories">
+    <title>Pattern Detective - Story Games</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/game.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <!-- Game Header -->
+        <header class="game-header">
+            <div class="container game-header-content">
+                <div class="game-title-section">
+                    <div class="game-title-icon">🔍</div>
+                    <div class="game-title-text">
+                        <h1>Pattern Detective</h1>
+                        <p class="game-subtitle">Identify the hidden pattern in each story</p>
+                    </div>
+                </div>
+
+                <div class="game-stats-bar">
+                    <div class="game-stat-item">
+                        <div class="game-stat-label">Score</div>
+                        <div class="game-stat-value score" id="currentScore">0</div>
+                    </div>
+                    <div class="game-stat-item">
+                        <div class="game-stat-label">Level</div>
+                        <div class="game-stat-value level" id="currentLevel">1</div>
+                    </div>
+                    <div class="game-stat-item">
+                        <div class="game-stat-label">Progress</div>
+                        <div class="game-stat-value" id="storiesCompleted">0</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Game Area -->
+        <main class="game-area">
+            <!-- Progress -->
+            <div class="level-progress">
+                <div class="level-info">
+                    <div class="level-badge">
+                        <span>⬆️</span>
+                        Level <span id="levelNumber">1</span>
+                    </div>
+                    <div class="difficulty-badge difficulty-easy" id="difficultyBadge">
+                        Easy
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story Card -->
+            <div class="story-card">
+                <p class="story-text" id="storyText">
+                    Loading story...
+                </p>
+            </div>
+
+            <!-- Result Display -->
+            <div id="resultDisplay" class="result-display">
+                <div class="result-icon" id="resultIcon">✅</div>
+                <div class="result-message" id="resultMessage">Correct!</div>
+                <div class="result-score-change" id="scoreChange">+3 points</div>
+                <div class="result-explanation">
+                    <div class="result-explanation-title">
+                        <span>💡</span>
+                        Explanation
+                    </div>
+                    <div class="result-explanation-text" id="explanationText"></div>
+                </div>
+            </div>
+
+            <!-- Answer Section -->
+            <div id="answerSection" class="answer-section">
+                <div class="answer-label">
+                    What is this story primarily about?
+                </div>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="checkAnswer('shape')">
+                        🔷 Shape
+                    </button>
+                    <button class="answer-btn" onclick="checkAnswer('color')">
+                        🎨 Color
+                    </button>
+                    <button class="answer-btn" onclick="checkAnswer('feeling')">
+                        ❤️ Feeling
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="game-actions">
+                <a href="dashboard.html" class="btn btn-secondary">
+                    Back to Dashboard
+                </a>
+                <button class="btn btn-primary" onclick="nextStory()" id="nextBtn">
+                    Next Story
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/game1.js"></script>
+</body>
+
+</html>
